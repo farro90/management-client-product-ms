@@ -1,2 +1,2 @@
 # management-client-product-ms
-Microservice management client product
+Microservice management-client-product
