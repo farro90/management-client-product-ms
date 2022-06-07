@@ -1,2 +1,2 @@
-# management_client_product_ms
+# management-client-product-ms
 Microservice management client product
