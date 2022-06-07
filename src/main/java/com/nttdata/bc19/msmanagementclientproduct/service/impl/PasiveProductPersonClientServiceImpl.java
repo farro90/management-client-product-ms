@@ -41,7 +41,7 @@ public class PasiveProductPersonClientServiceImpl implements IPasiveProductPerso
                             pasiveProductPersonClient.setPersonClient(personClientResponse);
                             pasiveProductPersonClient.setPasiveProduct(pasiveProductResponse);
 
-                            if(pasiveProductPersonClient.getPersonClient().getDocumentType().getName().equals(DocumentType.DNI.name()) && pasiveProductPersonClient.getPasiveProduct().getAllowPersonClient()){
+                            if(pasiveProductPersonClient.getPasiveProduct().getAllowPersonClient()){
                                 return pasiveProductPersonClientRepository.save(pasiveProductPersonClient);
                             }
                             return null;
