@@ -14,7 +14,7 @@ public class PasProBusCliRequest {
     //private LocalDateTime openingDate;
     private String idBusinessClient;
     private String idPasiveProduct;
-    private List<PersonClient> holders;
-    private List<PersonClient> signers;
+    private List<String> holders;
+    private List<String> signers;
     //private boolean state;
 }

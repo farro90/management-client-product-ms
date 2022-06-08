@@ -21,7 +21,7 @@ public class PasProBusCli extends BaseModel{
     private String idPasiveProduct;
     private BusinessClient businessClient;
     private PasiveProduct pasiveProduct;
-    private List<PersonClient> holders;
-    private List<PersonClient> signers;
+    private List<String> holders;
+    private List<String> signers;
     //private boolean state;
 }
