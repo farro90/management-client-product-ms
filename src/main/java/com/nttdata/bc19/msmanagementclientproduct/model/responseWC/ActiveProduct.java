@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 public class ActiveProduct {
     private String id;
     private String name;
-    private BigDecimal interestRateMonth;
-    private Boolean allowBusinessClient;
-    private Boolean allowPersonClient;
+    private double interestRateMonth;
+    private boolean allowBusinessClient;
+    private boolean allowPersonClient;
 }

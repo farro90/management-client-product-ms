@@ -8,12 +8,12 @@ import java.math.BigDecimal;
 public class PasiveProduct {
     private String id;
     private String name;
-    private BigDecimal maintenanceCommission;
-    private BigDecimal transactionCommission;
-    private BigDecimal minimumOpeningAmount;
+    private double maintenanceCommission;
+    private double transactionCommission;
+    private double minimumOpeningAmount;
     private int numLimitMovements;
     private int dayMovement;
-    private Boolean allowBusinessClient;
-    private Boolean allowPersonClient;
-    private Boolean needCreditCard;
+    private boolean allowBusinessClient;
+    private boolean allowPersonClient;
+    private boolean needCreditCard;
 }

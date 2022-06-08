@@ -12,9 +12,9 @@ import java.time.LocalDateTime;
 @Document
 public class ActProCreCarBusCli extends BaseModel{
     private String creditCardNumber;
-    private BigDecimal creditLine;
-    private BigDecimal amountConsumed;
-    private BigDecimal minimumPayment;
+    private double creditLine;
+    private double amountConsumed;
+    private double minimumPayment;
     private int AnnualCommission;
     private int cutoffDate;
     private int payLimitDate;

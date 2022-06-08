@@ -10,9 +10,9 @@ import java.math.BigDecimal;
 @Data
 @Document
 public class ActProCrePerCli extends BaseModel{
-    private BigDecimal amountGiven;
-    private BigDecimal amountPaid;
-    private BigDecimal interestRate;
+    private double amountGiven;
+    private double amountPaid;
+    private double interestRate;
     private String idPersonClient;
     private String idActiveProduct;
     private PersonClient personClient;
