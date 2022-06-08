@@ -2,10 +2,10 @@ package com.nttdata.bc19.msmanagementclientproduct.webclient.impl;
 
 import com.nttdata.bc19.msmanagementclientproduct.exception.ClientNotFoundException;
 import com.nttdata.bc19.msmanagementclientproduct.exception.ProductNotFoundException;
-import com.nttdata.bc19.msmanagementclientproduct.model.ActiveProduct;
-import com.nttdata.bc19.msmanagementclientproduct.model.BusinessClient;
-import com.nttdata.bc19.msmanagementclientproduct.model.PasiveProduct;
-import com.nttdata.bc19.msmanagementclientproduct.model.PersonClient;
+import com.nttdata.bc19.msmanagementclientproduct.model.responseWC.ActiveProduct;
+import com.nttdata.bc19.msmanagementclientproduct.model.responseWC.BusinessClient;
+import com.nttdata.bc19.msmanagementclientproduct.model.responseWC.PasiveProduct;
+import com.nttdata.bc19.msmanagementclientproduct.model.responseWC.PersonClient;
 import com.nttdata.bc19.msmanagementclientproduct.webclient.IServiceWC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

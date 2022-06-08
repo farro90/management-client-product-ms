@@ -1,9 +1,9 @@
 package com.nttdata.bc19.msmanagementclientproduct.webclient;
 
-import com.nttdata.bc19.msmanagementclientproduct.model.ActiveProduct;
-import com.nttdata.bc19.msmanagementclientproduct.model.BusinessClient;
-import com.nttdata.bc19.msmanagementclientproduct.model.PasiveProduct;
-import com.nttdata.bc19.msmanagementclientproduct.model.PersonClient;
+import com.nttdata.bc19.msmanagementclientproduct.model.responseWC.ActiveProduct;
+import com.nttdata.bc19.msmanagementclientproduct.model.responseWC.BusinessClient;
+import com.nttdata.bc19.msmanagementclientproduct.model.responseWC.PasiveProduct;
+import com.nttdata.bc19.msmanagementclientproduct.model.responseWC.PersonClient;
 import reactor.core.publisher.Mono;
 
 public interface IServiceWC {
