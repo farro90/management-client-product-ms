@@ -6,8 +6,8 @@ import java.math.BigDecimal;
 
 @Data
 public class ActProCreBusCliRequest {
-    private BigDecimal amountGiven;
-    private BigDecimal interestRate;
+    private double amountGiven;
+    private double interestRate;
     private String idBusinessClient;
     private String idActiveProduct;
 }

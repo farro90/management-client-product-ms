@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 @Data
 public class ActProCreCarBusCliRequest {
-    private BigDecimal creditLine;
+    private double creditLine;
     private int AnnualCommission;
     private int cutoffDate;
     private int payLimitDate;

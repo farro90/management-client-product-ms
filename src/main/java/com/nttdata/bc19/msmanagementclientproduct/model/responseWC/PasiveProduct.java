@@ -13,7 +13,6 @@ public class PasiveProduct {
     private double minimumOpeningAmount;
     private int numLimitMovements;
     private int dayMovement;
-    private boolean allowBusinessClient;
-    private boolean allowPersonClient;
-    private boolean needCreditCard;
+    private Boolean allowBusinessClient;
+    private Boolean allowPersonClient;
 }

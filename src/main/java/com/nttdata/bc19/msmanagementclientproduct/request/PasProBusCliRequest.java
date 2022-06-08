@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 public class PasProBusCliRequest {
     //private String code;
-    private BigDecimal amount;
+    private double amount;
     //private String accountNumber;
     //private LocalDateTime openingDate;
     private String idBusinessClient;
