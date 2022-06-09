@@ -4,6 +4,7 @@ import com.nttdata.bc19.msmanagementclientproduct.model.ActProCreBusCli;
 import com.nttdata.bc19.msmanagementclientproduct.repository.IActProCreBusCliRepository;
 import com.nttdata.bc19.msmanagementclientproduct.request.ActProCreBusCliRequest;
 import com.nttdata.bc19.msmanagementclientproduct.service.IActProCreBusCliService;
+import com.nttdata.bc19.msmanagementclientproduct.util.ActiveProductType;
 import com.nttdata.bc19.msmanagementclientproduct.webclient.impl.ServiceWCImpl;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,9 @@ public class ActProCreBusCliSerImpl implements IActProCreBusCliService {
                             actProCreBusCli.setIdActiveProduct(actProCreBusCliRequest.getIdActiveProduct());
                             actProCreBusCli.setBusinessClient(businessClientResponse);
                             actProCreBusCli.setActiveProduct(activeProductResponse);
-                            return activeProductCreditBusinessClientRepository.save(actProCreBusCli);
+                            if(activeProductResponse.getName().equals(ActiveProductType.CREDIT.name()))
+                                return activeProductCreditBusinessClientRepository.save(actProCreBusCli);
+                            return null;
                         })
                 );
     }

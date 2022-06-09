@@ -44,7 +44,7 @@ public class PasProBusCliSerImpl implements IPasProBusCliService {
                                     pasProBusCli.setHolders(pasiveProductBusinessClientrequest.getHolders());
                                     pasProBusCli.setSigners(pasiveProductBusinessClientrequest.getSigners());
 
-                                    if(pasiveProductResponse.getAllowBusinessClient() && pasiveProductResponse.getName().equals(PasiveProductType.CORRIENTE.name()) && pasProBusCli.getHolders().stream().count() > 0){
+                                    if(pasiveProductResponse.getAllowBusinessClient() && pasiveProductResponse.getName().equals(PasiveProductType.CORRIENTE.name()) && !pasProBusCli.getHolders().isEmpty()){
                                         return pasiveProductBusinessClientRepository.save(pasProBusCli);
                                     }
                                     return null;

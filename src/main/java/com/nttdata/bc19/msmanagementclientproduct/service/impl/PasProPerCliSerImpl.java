@@ -25,37 +25,35 @@ public class PasProPerCliSerImpl implements IPasProPerCliService {
 
     @Override
     public Mono<PasProPerCli> create(PasProPerCliRequest pasProPerCliRequest) {
-
         return clientServiceWC.findPersonClientById(pasProPerCliRequest.getIdPersonClient())
                 .switchIfEmpty(Mono.error(new Exception()))
                 .flatMap(personClientResponse ->
                     clientServiceWC.findPasiveProductById(pasProPerCliRequest.getIdPasiveProduct())
                         .switchIfEmpty(Mono.error(new Exception()))
-                        .flatMap(pasiveProductResponse -> {
-                            PasProPerCli pasProPerCli = new PasProPerCli();
-                            pasProPerCli.setId(new ObjectId().toString());
-                            pasProPerCli.setCreatedAt(LocalDateTime.now());
-                            pasProPerCli.setAmount(pasProPerCliRequest.getAmount());
-                            //pasiveProductPersonClient.setAccountNumber("GenerateNumberAccount"); //Generate number account
-                            pasProPerCli.setOpeningDate(LocalDateTime.now());
-                            pasProPerCli.setIdPersonClient(pasProPerCliRequest.getIdPersonClient());
-                            pasProPerCli.setIdPasiveProduct(pasProPerCliRequest.getIdPasiveProduct());
-                            pasProPerCli.setPersonClient(personClientResponse);
-                            pasProPerCli.setPasiveProduct(pasiveProductResponse);
+                        .flatMap(pasiveProductResponse ->
+                            pasiveProductPersonClientRepository.countByIdPersonClientAndIdPasiveProduct(pasProPerCliRequest.getIdPersonClient(), pasProPerCliRequest.getIdPasiveProduct())
+                                    .switchIfEmpty(Mono.error(new Exception()))
+                                    .flatMap(pasiveProductCountResponse ->
+                            {
+                                PasProPerCli pasProPerCli = new PasProPerCli();
+                                pasProPerCli.setId(new ObjectId().toString());
+                                pasProPerCli.setCreatedAt(LocalDateTime.now());
+                                pasProPerCli.setAmount(pasProPerCliRequest.getAmount());
+                                //pasiveProductPersonClient.setAccountNumber("GenerateNumberAccount"); //Generate number account
+                                pasProPerCli.setOpeningDate(LocalDateTime.now());
+                                pasProPerCli.setIdPersonClient(pasProPerCliRequest.getIdPersonClient());
+                                pasProPerCli.setIdPasiveProduct(pasProPerCliRequest.getIdPasiveProduct());
+                                pasProPerCli.setPersonClient(personClientResponse);
+                                pasProPerCli.setPasiveProduct(pasiveProductResponse);
 
-                            long numAhorro = pasiveProductPersonClientRepository.findByIdPersonClient(pasProPerCli.getPersonClient().getId()).toStream().filter(x -> x.getPasiveProduct().getName().equals(PasiveProductType.AHORRO.name())).count();
-                            long numCorriente = pasiveProductPersonClientRepository.findByIdPersonClient(pasProPerCli.getPersonClient().getId()).toStream().filter(x -> x.getPasiveProduct().getName().equals(PasiveProductType.CORRIENTE.name())).count();
-                            long numPlazoFijo = pasiveProductPersonClientRepository.findByIdPersonClient(pasProPerCli.getPersonClient().getId()).toStream().filter(x -> x.getPasiveProduct().getName().equals(PasiveProductType.PLAZOFIJO.name())).count();
+                                boolean validateClientPersonPasiveProduct = pasiveProductCountResponse > 0 ? false : true;
 
-                            boolean validateClientPersonPasiveProduct = (pasiveProductResponse.getName().equals(PasiveProductType.AHORRO.name()) && numAhorro == 0)
-                                                                        || (pasiveProductResponse.getName().equals(PasiveProductType.CORRIENTE.name()) && numCorriente == 0)
-                                                                        || (pasiveProductResponse.getName().equals(PasiveProductType.PLAZOFIJO.name()) && numPlazoFijo == 0);
-
-                            if(pasiveProductResponse.getAllowPersonClient() && validateClientPersonPasiveProduct){
-                                return pasiveProductPersonClientRepository.save(pasProPerCli);
-                            }
-                            return null;
-                        })
+                                if(pasiveProductResponse.getAllowPersonClient() && validateClientPersonPasiveProduct){
+                                    return pasiveProductPersonClientRepository.save(pasProPerCli);
+                                }
+                                return null;
+                            })
+                        )
                 );
     }
 

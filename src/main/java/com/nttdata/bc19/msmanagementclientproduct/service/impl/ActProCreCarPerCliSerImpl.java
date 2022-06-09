@@ -4,6 +4,7 @@ import com.nttdata.bc19.msmanagementclientproduct.model.ActProCreCarPerCli;
 import com.nttdata.bc19.msmanagementclientproduct.repository.IActProCreCarPerCliRepository;
 import com.nttdata.bc19.msmanagementclientproduct.request.ActProCreCarPerCliRequest;
 import com.nttdata.bc19.msmanagementclientproduct.service.IActProCreCarPerCliService;
+import com.nttdata.bc19.msmanagementclientproduct.util.ActiveProductType;
 import com.nttdata.bc19.msmanagementclientproduct.webclient.impl.ServiceWCImpl;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,10 @@ public class ActProCreCarPerCliSerImpl implements IActProCreCarPerCliService {
                             actProCreCarPerCli.setIdActiveProduct(actProCreCarPerCliRequest.getIdActiveProduct());
                             actProCreCarPerCli.setPersonClient(personClientResponse);
                             actProCreCarPerCli.setActiveProduct(activeProductResponse);
-                            return activeProductCreditCardPersonClientRepository.save(actProCreCarPerCli);
+
+                            if(activeProductResponse.getName().equals(ActiveProductType.CREDITCARD.name()))
+                                return activeProductCreditCardPersonClientRepository.save(actProCreCarPerCli);
+                            return null;
                     })
                 );
     }

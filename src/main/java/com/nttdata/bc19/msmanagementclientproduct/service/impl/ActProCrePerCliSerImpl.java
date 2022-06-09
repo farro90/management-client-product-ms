@@ -4,6 +4,7 @@ import com.nttdata.bc19.msmanagementclientproduct.model.ActProCrePerCli;
 import com.nttdata.bc19.msmanagementclientproduct.repository.IActProCrePerCliRepository;
 import com.nttdata.bc19.msmanagementclientproduct.request.ActProCrePerCliRequest;
 import com.nttdata.bc19.msmanagementclientproduct.service.IActProCrePerCliService;
+import com.nttdata.bc19.msmanagementclientproduct.util.ActiveProductType;
 import com.nttdata.bc19.msmanagementclientproduct.webclient.impl.ServiceWCImpl;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,10 @@ public class ActProCrePerCliSerImpl implements IActProCrePerCliService {
                             actProCrePerCli.setIdActiveProduct(actProCrePerCliRequest.getIdActiveProduct());
                             actProCrePerCli.setPersonClient(personClientResponse);
                             actProCrePerCli.setActiveProduct(activeProductResponse);
-                            return activeProductCreditPersonClientRepository.save(actProCrePerCli);
+
+                            if(activeProductResponse.getName().equals(ActiveProductType.CREDIT.name()))
+                                return activeProductCreditPersonClientRepository.save(actProCrePerCli);
+                            return null;
                         })
                 );
     }
