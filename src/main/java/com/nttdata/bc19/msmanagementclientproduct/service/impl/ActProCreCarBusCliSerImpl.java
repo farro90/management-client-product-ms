@@ -43,7 +43,7 @@ public class ActProCreCarBusCliSerImpl implements IActProCreCarBusCliService {
                                     actProCreCarBusCli.setIdActiveProduct(actProCreCarBusCliRequest.getIdActiveProduct());
                                     actProCreCarBusCli.setBusinessClient(businessClientResponse);
                                     actProCreCarBusCli.setActiveProduct(activeProductResponse);
-                                    if(activeProductResponse.getName().equals(ActiveProductType.CREDITCARD.name()))
+                                    if(activeProductResponse.getName().equals(ActiveProductType.TARJETACREDITO.name()))
                                         return activeProductCreditCardBusinessClientRepository.save(actProCreCarBusCli);
                                     return null;
                                 })

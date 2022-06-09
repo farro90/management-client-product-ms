@@ -45,7 +45,7 @@ public class ActProCreCarPerCliSerImpl implements IActProCreCarPerCliService {
                             actProCreCarPerCli.setPersonClient(personClientResponse);
                             actProCreCarPerCli.setActiveProduct(activeProductResponse);
 
-                            if(activeProductResponse.getName().equals(ActiveProductType.CREDITCARD.name()))
+                            if(activeProductResponse.getName().equals(ActiveProductType.TARJETACREDITO.name()))
                                 return activeProductCreditCardPersonClientRepository.save(actProCreCarPerCli);
                             return null;
                     })

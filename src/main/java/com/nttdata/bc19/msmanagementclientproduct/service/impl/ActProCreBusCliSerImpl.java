@@ -41,7 +41,7 @@ public class ActProCreBusCliSerImpl implements IActProCreBusCliService {
                             actProCreBusCli.setIdActiveProduct(actProCreBusCliRequest.getIdActiveProduct());
                             actProCreBusCli.setBusinessClient(businessClientResponse);
                             actProCreBusCli.setActiveProduct(activeProductResponse);
-                            if(activeProductResponse.getName().equals(ActiveProductType.CREDIT.name()))
+                            if(activeProductResponse.getName().equals(ActiveProductType.CREDITO.name()))
                                 return activeProductCreditBusinessClientRepository.save(actProCreBusCli);
                             return null;
                         })

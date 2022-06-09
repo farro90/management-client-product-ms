@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: ms-management-client-product
+  cloud:
+    config:
+      uri: http://localhost:8090
+      name: nttdata
+      password: nttd4t4

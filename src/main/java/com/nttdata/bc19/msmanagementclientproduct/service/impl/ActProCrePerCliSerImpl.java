@@ -42,7 +42,7 @@ public class ActProCrePerCliSerImpl implements IActProCrePerCliService {
                             actProCrePerCli.setPersonClient(personClientResponse);
                             actProCrePerCli.setActiveProduct(activeProductResponse);
 
-                            if(activeProductResponse.getName().equals(ActiveProductType.CREDIT.name()))
+                            if(activeProductResponse.getName().equals(ActiveProductType.CREDITO.name()))
                                 return activeProductCreditPersonClientRepository.save(actProCrePerCli);
                             return null;
                         })
